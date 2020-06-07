@@ -45,8 +45,8 @@ public class SmallerThanTheCurrentNumberSolution {
      * @return An {@code int} array describing how many numbers are smaller than the number in its index.
      */
     public int[] smallerNumbersThanCurrent(final int[] nums) {
-        if (nums == null || nums.length == 0 || nums.length > 500) {
-            throw new IllegalArgumentException("nums cannot be null and must have between 1 and 500 elements.");
+        if (nums == null || nums.length < 2 || nums.length > 500) {
+            throw new IllegalArgumentException("nums cannot be null and must have between 2 and 500 elements.");
         }
 
         // Clone the nums; the Arrays.sort mutates the array during its sort operation and we don't want to change the
