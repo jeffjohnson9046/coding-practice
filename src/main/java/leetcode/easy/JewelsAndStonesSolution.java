@@ -37,21 +37,9 @@ public class JewelsAndStonesSolution {
      * @return The number of Jewels that occur in the collection of Stones.
      */
     public int numJewelsInStones(final String J, final String S) {
-        if (J == null) {
-            throw new IllegalArgumentException("J cannot be null");
-        }
+        validate(J, "J cannot be null and must contain between 1 and 50 elements");
 
-        if (J.length() > 50) {
-            throw new IllegalArgumentException(String.format("J contains %d characters; cannot be longer than 50 characters", J.length()));
-        }
-
-        if (S == null) {
-            throw new IllegalArgumentException("S cannot be null");
-        }
-
-        if (S.length() > 50) {
-            throw new IllegalArgumentException(String.format("S contains %d characters; cannot be longer than 50 characters", S.length()));
-        }
+        validate(S, "S cannot be null and must contain between 1 and 50 elements");
 
         final Set<Character> jewels = new HashSet<>();
         for (final char c : J.toCharArray()) {
@@ -67,5 +55,18 @@ public class JewelsAndStonesSolution {
         }
 
         return numberOfJewels;
+    }
+
+    /**
+     * Validate the input {@link java.lang.String} according to the constraints defined in the <strong>Note</strong>
+     * section of this problem.
+     *
+     * @param S The input {@link java.lang.String} to validate
+     * @param exceptionMessage The message to display in the exception
+     */
+    private void validate(final String S, final String exceptionMessage) {
+        if (S == null || S.length() < 1 || S.length() > 50) {
+            throw new IllegalArgumentException(exceptionMessage);
+        }
     }
 }
