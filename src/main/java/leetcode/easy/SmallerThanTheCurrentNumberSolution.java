@@ -1,8 +1,15 @@
 package leetcode.easy;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+import static java.util.stream.Collectors.toMap;
 
 /**
  * Given the array nums, for each nums[i] find out how many numbers in the array are smaller than it. That is, for each
@@ -25,8 +32,9 @@ import java.util.Map;
  * <pre>
  * Input: nums = [6,5,4,8]
  * Output: [2,1,0,3]
+ * </pre>
  * <strong>Example 3:</strong>
- *
+ * <pre>
  * Input: nums = [7,7,7,7]
  * Output: [0,0,0,0]
  * </pre>
