@@ -54,4 +54,42 @@ public class ReduceNumberToZeroSolutionTest {
     public void shouldThrowWhenNumIsGreaterThanTenToTheSixth() {
         reduceNumberToZeroSolution.numberOfSteps(Integer.MAX_VALUE);
     }
+
+    @Test
+    public void shouldSatisfyExample1Recursively() {
+        final int results = reduceNumberToZeroSolution.numberOfStepsRecursive(14);
+
+        assertEquals(6, results);
+    }
+
+    @Test
+    public void shouldSatisfyExample2Recursively() {
+        final int results = reduceNumberToZeroSolution.numberOfStepsRecursive(8);
+
+        assertEquals(4, results);
+    }
+
+    @Test
+    public void shouldSatisfyExample3Recursively() {
+        final int results = reduceNumberToZeroSolution.numberOfStepsRecursive(123);
+
+        assertEquals(12, results);
+    }
+
+    @Test
+    public void shouldReturnZeroStepsForZeroRecursively() {
+        final int results = reduceNumberToZeroSolution.numberOfStepsRecursive(0);
+
+        assertEquals(0, results);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldThrowWhenNumIsLessThanZeroRecursively() {
+        reduceNumberToZeroSolution.numberOfStepsRecursive(-1);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldThrowWhenNumIsGreaterThanTenToTheSixthRecursively() {
+        reduceNumberToZeroSolution.numberOfStepsRecursive(Integer.MAX_VALUE);
+    }
 }

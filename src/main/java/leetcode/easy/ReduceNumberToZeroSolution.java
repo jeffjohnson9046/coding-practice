@@ -74,4 +74,24 @@ public class ReduceNumberToZeroSolution {
 
         return steps;
     }
+
+    public int numberOfStepsRecursive(final int num) {
+        if (num < 0 || num > Math.pow(10, 6)) {
+            throw new IllegalArgumentException("num must be between 0 and 10 ^ 6 (inclusive).");
+        }
+
+        return getNumberOfStepsRecursively(num, 0);
+    }
+
+    private int getNumberOfStepsRecursively(final int num, final int steps) {
+        if (num == 0) {
+            return steps;
+        }
+
+        final int computedNumber = num % 2 == 0
+                ? num / 2
+                : num - 1;
+
+        return getNumberOfStepsRecursively(computedNumber, steps + 1);
+    }
 }
