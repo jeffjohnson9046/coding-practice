@@ -2,6 +2,7 @@ package leetcode.easy;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 /**
@@ -72,6 +73,32 @@ public class MostCandiesSolution {
         }
 
         return results;
+    }
+
+    public List<Boolean> kidsWithCandiesStreams(final int[] candies, final int extraCandies) {
+        // CONSTRAINT:  The candies array must contain at least two and no more than 100 elements
+        if (candies.length < 2 || candies.length > 100) {
+            throw new IllegalArgumentException(String.format("The number of elements in the candies array must be between 2 and 100 (inclusive).  Candies array contains %d candies", candies.length));
+        }
+
+        // CONSTRAINT:  the extraCandies must be between 1 and 50 (inclusive)
+        if (extraCandies < 1 || extraCandies > 50) {
+            throw new IllegalArgumentException(String.format("extraCandies value must be between 1 and 50 (inclusive).  The extraCandies value %d is out of bounds.", extraCandies));
+        }
+
+        // CONSTRAINT:  each element in the candies array must be between 1 and 100 (inclusive)
+        if (IntStream.of(candies).anyMatch(i -> i < 1 || i > 100)) {
+            throw new IllegalArgumentException("Each value in the candies array must be between 1 and 100 (inclusive).");
+        }
+
+        final List<String> foo = new ArrayList<>();
+        final int maxCandies = IntStream.of(candies)
+                .max()
+                .getAsInt();
+
+        return IntStream.of(candies)
+                .mapToObj(candy -> candy >= maxCandies - extraCandies)
+                .collect(Collectors.toList());
     }
 
     /**
